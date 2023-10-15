@@ -4,6 +4,27 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 const AddTaskForm = (props) => {
 
+  const Priorities = [
+    {
+    value: "Low",
+    label: "Low",
+    },
+  
+    {
+    value: "Medium",
+    label: "Medium",
+    },
+  
+    {
+    value: "High",
+    label: "High",
+    }
+  ]
+
+  const handlePriorityChange = (event) => {
+    props.change(event);
+  };
+
   return (
     <Box
       component="form"
@@ -14,6 +35,31 @@ const AddTaskForm = (props) => {
     >
 
 <div>
+        
+        
+        
+<div>
+        <TextField
+          id="outlined-select-priority-native"
+          onChange={handlePriorityChange}
+          name="priority"
+          select
+          label="Priority"
+          SelectProps={{
+            native: true,
+          }}
+          
+        >
+          {Priorities.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </TextField>
+      </div>
+        
+        
+        
         <TextField
           required
           id="outlined-required"
